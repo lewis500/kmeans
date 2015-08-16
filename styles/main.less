@@ -1,0 +1,41 @@
+@import "../bower_components/material-color/material-color";
+@import (inline) "../node_modules/angular-material/angular-material.css";
+
+
+svg{
+	// width: 80%;
+	width: 450px;
+	// height: 80%;
+}
+
+rect.bg{
+	fill: @clr-grey-100;
+}
+
+circle.dot{
+	fill: @clr-pink-500;
+	opacity: .5;
+}
+
+circle.centroid{
+	fill: @clr-light-blue-500;
+	opacity: .5;
+}
+
+.g-dot, .g-centroid{
+	transition: transform 1s ease-in-out;
+}
+
+line.line{
+	stroke-width: .2px;
+	fill: none;
+	stroke: @clr-blue-700;
+	opacity: .2;
+}
+
+path.vor{
+	fill: none;
+	stroke-width: .25px;
+	stroke: #333;
+	opacity: .3;
+}

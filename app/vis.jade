@@ -1,0 +1,13 @@
+button(ng-click='vm.update()') update
+br
+svg(version="1.1" baseProfile="basic" x="0" y="0" viewBox="0 0 100 100")
+	rect(class='bg' width='100' height='100')
+	g.g-dot(ng-repeat='d in vm.dots track by d.id' ng-attr-transform='translate({{d.x}},{{d.y}})' )
+		circle(r='.5' class='dot')
+	g.g-centroid(ng-repeat='c in vm.centroids track by c.id' ng-attr-transform='translate({{c.x}},{{c.y}})' )
+		circle(r='.5' class='centroid')
+	g.g-lines(ng-repeat='c in vm.centroids track by c.id')
+		line.line(ng-repeat='d in c.dots' ng-attr-x1="{{c.x}}" ng-attr-y1="{{c.y}}" ng-attr-x2="{{d.x}}" ng-attr-y2="{{d.y}}")
+
+	//- path.vor(ng-repeat='p in vm.vorPaths() track by $index' ng-attr-d='{{p}}' )
+	//- rect(width='50' height='50' fill='red')

@@ -2,13 +2,13 @@
 <button ng-click="vm.update()">update</button><br/>
 <svg version="1.1" baseProfile="basic" x="0" y="0" viewBox="0 0 100 100">
   <rect width="100" height="100" class="bg"></rect>
+  <g ng-repeat="c in vm.centroids track by c.id" class="g-lines">
+    <line ng-repeat="d in c.dots" ng-attr-x1="{{c.x}}" ng-attr-y1="{{c.y}}" ng-attr-x2="{{d.x}}" ng-attr-y2="{{d.y}}" class="line"></line>
+  </g>
   <g ng-repeat="d in vm.dots track by d.id" ng-attr-transform="translate({{d.x}},{{d.y}})" class="g-dot">
     <circle r=".5" class="dot"></circle>
   </g>
   <g ng-repeat="c in vm.centroids track by c.id" ng-attr-transform="translate({{c.x}},{{c.y}})" class="g-centroid">
     <circle r=".5" class="centroid"></circle>
-  </g>
-  <g ng-repeat="c in vm.centroids track by c.id" class="g-lines">
-    <line ng-repeat="d in c.dots" ng-attr-x1="{{c.x}}" ng-attr-y1="{{c.y}}" ng-attr-x2="{{d.x}}" ng-attr-y2="{{d.y}}" class="line"></line>
   </g>
 </svg>

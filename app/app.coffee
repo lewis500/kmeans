@@ -48,16 +48,16 @@ class Ctrl
 
 	makeCentroids: (dots)->
 		#implements k++ algorithm
-		@centroids = _.sample dots, 4
+		@centroids = _.sample dots, 5
 			.map (centroid)=>
+				ss = 0
 				distances = dots.map (dot) ->
 					d = euclid dot,centroid
-				ss = distances.reduce (a,b)->
-					a + b**2
+					ss += d**2
+					d
 				q = 0
 				intervals = distances.map (d)->
 					q += ((d**2)/ss)
-				console.log intervals
 				draw = Math.random()
 				i = _.findLastIndex intervals, (d)->
 					d < draw
@@ -77,7 +77,7 @@ class Ctrl
 
 		_.range 0,100
 			.forEach =>
-				@dots.push new Dot @gen(70,10), @gen(70,10)
+				@dots.push new Dot @gen(85,7), @gen(75,7)
 
 		_.range 0,100
 			.forEach =>
@@ -86,6 +86,10 @@ class Ctrl
 		_.range 0,75
 			.forEach =>
 				@dots.push new Dot @gen(40,7), @gen(80,3)
+
+		_.range 0,75
+			.forEach =>
+				@dots.push new Dot @gen(50,3), @gen(40,3)
 
 	update: ->
 		_.invoke @centroids,'clear'
